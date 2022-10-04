@@ -9,25 +9,28 @@ void main() {
   pid=fork();
   
   if (pid==0){
-  fork();
+  
+  	pid_nieto=fork();
+  	if(pid_nieto==0){
+  	printf("Soy el proceso p3, el pid del hijo %d\n", getpid());//pid del proceso hijo
+  	printf("el pid del padre %d\n", getppid());//pid del proceso padre
+  	
+  	}else{
   	printf("Soy el proceso p2, el pid del hijo %d\n", getpid());//pid del proceso hijo
   	printf("el pid del padre %d\n", getppid());//pid del proceso padre
   	
+  	}
   	
-  	
-  }
- 	else{
+  	}else{
  	wait(NULL); 	 
- 	fork();
+
  	 
-  	printf("Soy el proceso p3,el pid del hijo %d\n", getpid());//pid del proceso hijo
+  	printf("Soy el proceso p1,el pid del hijo %d\n", getpid());//pid del proceso hijo
   	printf("el pid del padre %d\n", getppid());//pid del proceso padre
   	
   	}
 	exit(0);
-  
-  
-  
+	
   
   
   }
